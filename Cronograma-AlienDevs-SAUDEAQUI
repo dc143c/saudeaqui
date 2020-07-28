@@ -1,0 +1,64 @@
+Primeira semana:
+
+Programar o backend: 
+
+-> Esquema de usuários:
+	Nome completo,
+	Data de nascimento,
+	Endereço,
+	Email,
+	Senha.
+
+-> Esquema de avaliações.
+	Nome,	
+	Texto,
+	Estrelas
+
+-> Esquema de hospitais:
+	Nome do hospital,
+	Endereço do hospital (Pointer),
+	Status do hospital (Leitos ocupados/Leitos totais),
+	Médicos em plantão,
+	Tempo médio de espera,
+	Especialidades: (o usuário quem adiciona?),
+	Avaliação geral,
+	Comentários,
+	Rota (procurar por como traçar a rota).
+
+Rotas necessárias:
+	Rota para cadastro,
+	Rota para login comum,
+	Rota de login com Facebook,
+	Rota de login com conta do Google,
+	Rota para carregar hospitais,
+	Rota para carregar hospital COVID-19,
+	Rota para carregar informações sobre um hospital,
+	Rota para salvar hospitais,
+	Rota de avaliar e comentar hospitais,
+	Rota de ver comentários e avaliações,
+	Rota de editar perfil,
+	Rota para visualizar cadastro.
+
+Segunda semana e seguintes:
+
+Programar o front-end:
+
+Ícones necessários,
+Esquema de cores a ser utilizado,
+Tipografia básica,
+SplashScreen,
+
+-> Programando a tela de login e cadastro.
+-> Programando a BottomTabNavigator com quatro opções: Pesquisa dos hospitais, Perfil do usuário, Hospitais salvos e Configurações do aplicativo.
+-> Programando a tela de mapa, com os pointers de hospitais e botão COVID19.
+-> Programando a tela dos hospitais, com informações geradas no backend e armazenadas no banco de dados e a opção de traçar a rota.
+-> Programando uma tela de rota, onde o aplicativo deve auxiliar o usuário a chegar no destino (pesquisar integração com Google Maps).
+-> Programando a tela dos comentários e avaliações, com as estrelas sendo programadas em base dos números de avaliação.
+-> Programando a tela do perfil, onde serão visualizadas informações sobre o usuário e possibilitando a edição destas.
+-> Programando a tela de configurações, com opções de geolocalização, privacidade do usuário, ajuda, informações sobre a aplicação, o botão de sair da conta e também histórico.
+-> Programando a tela de opções de privacidade (Envio de e-mails).
+-> Programando a tela de ajuda, onde haverão informações de uso do aplicativo, sendo explicadas para leigos.
+-> Programando a tela de informações, onde estarão os créditos da aplicação, com nomes, linkedIn e outras informações úteis sobre os desenvolvedores.
+TALVEZ -> Programando a tela do histórico, onde serão armazenados os últimos hospitais vistos(?).
+
+
