@@ -1,0 +1,12 @@
+{
+  "name": "SaudeAqui",
+  "displayName": "SaudeAqui",
+  "expo": {
+    "name": "SaudeAqui",
+    "slug": "SaudeAqui",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

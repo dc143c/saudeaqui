@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1048523737489",
+    "firebase_url": "https://saudeaqui-al13nd3vs.firebaseio.com",
+    "project_id": "saudeaqui-al13nd3vs",
+    "storage_bucket": "saudeaqui-al13nd3vs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1048523737489:android:39d24b33347b2fa2e17230",
+        "android_client_info": {
+          "package_name": "com.aliendevs.saudeaqui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1048523737489-qcson88207vgkr0e2m0ugt3s8pvok0su.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC01JDFD4PaO0_280QUpIh2r3dV9y6BFjI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1048523737489-qcson88207vgkr0e2m0ugt3s8pvok0su.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
