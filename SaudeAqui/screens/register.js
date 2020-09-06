@@ -12,35 +12,50 @@ export default function Register({ navigation }) {
   const [Adress, setAdress] = useState([]);
   const [Email, setEmail] = useState([]);
   const [Password, setPassword] = useState([]);
+  const [error, setError] = useState();
 
   const [user, setUser] = useState();
 
   function onAuthStateChanged(user) {
     setUser(user);
-    navigation.navigate('Homescreen');
+    if(!!user){
+      navigation.navigate('Homescreen');
+    }
   }
 
   useEffect(() => {
+
+    setName('');
+    setAge('');
+    setAdress('');
+    setEmail('');
+    setPassword('');
+
+    if(!!user){
+      navigation.navigate('Homescreen');
+      }
+
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
   }, []);
 
   async function register(){
-    try{
-       await auth()
-       .createUserWithEmailAndPassword(Email, Password);
-       await firestore().collection('Users')
-      .add({
-        Name,
-        Age,
-        Adress,
-        Email,
-        Password,
-      }).then(() => {
-        console.log('User added!');
-      });
-        navigation.navigate('Homescreen');
-    } catch(err){
-        console.log(err);
+    if(Name && Age && Adress && Email && Password !== null || Name && Age && Adress && Email && Password !== undefined){
+      try{
+        await auth()
+        .createUserWithEmailAndPassword(Email, Password);
+        await firestore().collection('Users')
+        .add({
+          Name,
+          Age,
+          Adress,
+          Email,
+          Password,
+        });
+      } catch(error){
+          setError(error.message);
+      }
+    } else {
+      setError('todos os campos são necessários');
     }
   }
 
@@ -50,6 +65,7 @@ export default function Register({ navigation }) {
            <StatusBar barStyle='light' backgroundColor='#0DAF9A'/>
            <Text style={styles.h1}>Cadastro</Text>
            <View style={styles.textContainer}>
+           {!!error && <Text style={styles.error}>{error}</Text>}
                <Text style={styles.h5}>nome completo</Text>
                <TextInput style={styles.textInput} placeholder="ex: Daniel Gomes de Carvalho" value={Name} inlineImageLeft='pessoa' inlineImagePadding={10} onChangeText={name => setName(name)}/>
                <Text style={styles.h5}>idade</Text>
@@ -81,7 +97,7 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     paddingLeft: '15%',
-    marginTop: '15%',
+    marginTop: '10%',
     textAlign:'left',
     width:'100%',
   },
@@ -90,6 +106,12 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     fontSize: 11,
     marginTop: '5%'
+  },
+  error: {
+    color:'red',
+    fontWeight: 'bold',
+    fontSize: 10,
+    marginBottom: '5%'
   },
   h1: {
     color:'#0DAF9A',

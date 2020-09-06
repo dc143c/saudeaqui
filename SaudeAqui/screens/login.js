@@ -11,25 +11,39 @@ export default function LoginPage({ navigation }) {
   const [Email, setEmail] = useState([]);
   const [Password, setPassword] = useState([]);
   const [user, setUser] = useState();
+  const [error, setError] = useState();
 
   function onAuthStateChanged(user) {
     setUser(user);
+    if(!!user){
+      navigation.navigate('Homescreen');
+    }
   }
 
   useEffect(() => {
+
+    setEmail('');
+    setPassword('');
+
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+
     if(!!user){
     navigation.navigate('Homescreen');
     }
+
     return subscriber;
   }, []);
 
   async function login(){
-    try {
-    await auth()
-    .signInWithEmailAndPassword(Email, Password).then(navigation.navigate('Homescreen'));
-    } catch(err){
-    console.log(err);
+    if(Email && Password != null){
+      try{
+        await auth()
+        .signInWithEmailAndPassword(Email, Password);
+      } catch(error){
+        setError(error.message);
+      }
+    } else {
+      setError('Você precisa definir um e-mail e senha para fazer o login.')
     }
   }
 
@@ -39,10 +53,11 @@ export default function LoginPage({ navigation }) {
            <StatusBar barStyle='light' backgroundColor='#0DAF9A'/>
            <Logo style={styles.logo}/>
            <View style={styles.textContainer}>
+             {!!error && <Text style={styles.error}>{error}</Text>}
                <Text style={styles.h5}>e-mail</Text>
-               <TextInput style={styles.textInput} placeholder="example@email.com" inlineImageLeft='email' inlineImagePadding={10} onChangeText={email => setEmail(email)}/>
+               <TextInput style={styles.textInput} placeholder="example@email.com" value={Email} inlineImageLeft='email' inlineImagePadding={10} onChangeText={email => setEmail(email)}/>
                <Text style={styles.h5}>senha</Text>
-               <TextInput style={styles.textInput} placeholder="**********" textContentType="password" secureTextEntry={true} inlineImageLeft='password' inlineImagePadding={10} onChangeText={pass => setPassword(pass)}/>
+               <TextInput style={styles.textInput} placeholder="**********" value={Password} textContentType="password" secureTextEntry={true} inlineImageLeft='password' inlineImagePadding={10} onChangeText={pass => setPassword(pass)}/>
                <TouchableOpacity>
                   <Text style={styles.h4}>ESQUECEU SUA SENHA?</Text>
                </TouchableOpacity>
@@ -90,6 +105,12 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     fontSize: 11,
     marginTop: '5%'
+  },
+  error: {
+    color:'red',
+    fontWeight: 'bold',
+    fontSize: 10,
+    marginBottom: '2%'
   },
   h4: {
     marginLeft: '20%',
